@@ -1,3 +1,4 @@
+#Шеметов 09с41
 from registry import Registry
 
 reg = Registry()
