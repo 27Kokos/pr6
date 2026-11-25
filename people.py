@@ -17,6 +17,8 @@ class Person:
     @staticmethod
     def check_email(email):
         email = email.strip().lower()
+        if " " in email:
+            raise AnketaError("пробел внутри почты")
         if email.count("@") != 1:
             raise AnketaError("неверная почта")
         parts = email.split("@")
@@ -52,7 +54,9 @@ class Person:
         return self.fio
 
     def __lt__(self, other):
-        return self.fio < other.fio
+        my_fio = self.fio.replace('ё', 'е').replace('Ё', 'Е')
+        other_fio = other.fio.replace('ё', 'е').replace('Ё', 'Е')
+        return my_fio < other_fio
 
 class Student(Person):
     def __init__(self, fio, email, phone, group):

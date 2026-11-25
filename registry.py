@@ -38,11 +38,13 @@ class Registry:
     def __len__(self):
         return len(self.good)
 
-    def save(self):
-        with open("ok.txt", "w", encoding="utf-8") as f:
+    def save_ok(self, filename):
+        with open(filename, "w", encoding="utf-8") as f:
             for p in self.good:
                 f.write(f"{p.fio};{p.email};{p.phone}\n")
-        with open("errors.txt", "w", encoding="utf-8") as f:
+
+    def save_errors(self, filename):
+        with open(filename, "w", encoding="utf-8") as f:
             for b in self.bad:
                 f.write(f"Строка {b[0]}: {b[2]}\n{b[1]}\n")
 
